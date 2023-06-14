@@ -19,10 +19,6 @@ const App = () => {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
-
   const addUniqueImage = () => {
     const randomImageIndex = Math.floor(Math.random() * randomImages.length);
     const newRandomImagesArray = [...randomImages];
@@ -244,14 +240,14 @@ const Component = ({
     const overflowY = containerRect.height - targetRect.height;
 
     if (e.left < containerRect.left) {
-      e.left = containerRect.left;
+      e.left = 0;
     } else if (e.left > containerRect.left + overflowX) {
-      e.left = containerRect.left + overflowX;
+      e.left = containerRect.width - targetRect.width;
     }
     if (e.top < containerRect.top) {
-      e.top = containerRect.top;
+      e.top = 0;
     } else if (e.top > containerRect.top + overflowY) {
-      e.top = containerRect.top + overflowY;
+      e.top = containerRect.height - targetRect.height;
     }
 
     updateMoveable(id, {
